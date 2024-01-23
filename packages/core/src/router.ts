@@ -101,6 +101,7 @@ export class Router {
       (event.target as Element).hasAttribute('scroll-region')
     ) {
       this.saveScrollPositions()
+      console.log("I have scroll position !");
     }
   }
 

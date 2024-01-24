@@ -100,8 +100,8 @@ export class Router {
       typeof (event.target as Element).hasAttribute === 'function' &&
       (event.target as Element).hasAttribute('scroll-region')
     ) {
+      // this.page have scrollRegions with scrollPosition here
       this.saveScrollPositions()
-      console.log("I have scroll position !");
     }
   }
 
@@ -109,6 +109,7 @@ export class Router {
     this.replaceState({
       ...this.page,
       scrollRegions: Array.from(this.scrollRegions()).map((region) => {
+        console.log(region.scrollTop);
         return {
           top: region.scrollTop,
           left: region.scrollLeft,
@@ -127,7 +128,6 @@ export class Router {
         region.scrollLeft = 0
       }
     })
-    this.saveScrollPositions()
     if (window.location.hash) {
       // We're using a setTimeout() here as a workaround for a bug in the React adapter where the
       // rendering isn't completing fast enough, causing the anchor link to not be scrolled to.
@@ -136,6 +136,8 @@ export class Router {
   }
 
   protected restoreScrollPositions(): void {
+    //this.page.scrollRegions : empty array
+    console.log(this.page);
     if (this.page.scrollRegions) {
       this.scrollRegions().forEach((region: Element, index: number) => {
         const scrollPosition = this.page.scrollRegions[index]
@@ -176,6 +178,7 @@ export class Router {
     }
   }
 
+  // It is not locationVisit in my case (Axel)
   protected isLocationVisit(): boolean {
     try {
       return window.sessionStorage.getItem('inertiaLocationVisit') !== null
@@ -202,6 +205,7 @@ export class Router {
     return !!(response && response.status === 409 && response.headers['x-inertia-location'])
   }
 
+  // It is Inertia response in my case (Axel)
   protected isInertiaResponse(response: AxiosResponse): boolean {
     return !!response?.headers['x-inertia']
   }
@@ -452,6 +456,7 @@ export class Router {
   ): Promise<void> {
     return Promise.resolve(this.resolveComponent(page.component)).then((component) => {
       if (visitId === this.visitId) {
+        // check here
         page.scrollRegions = page.scrollRegions || []
         page.rememberedState = page.rememberedState || {}
         replace = replace || hrefToUrl(page.url).href === window.location.href
@@ -459,6 +464,9 @@ export class Router {
         this.swapComponent({ component, page, preserveState }).then(() => {
           if (!preserveScroll) {
             this.resetScrollPositions()
+          } else {
+            // I add this method here, but I think the problem is before
+            this.restoreScrollPositions();
           }
           if (!replace) {
             fireNavigateEvent(page)

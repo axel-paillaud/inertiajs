@@ -137,7 +137,6 @@ export class Router {
 
   protected restoreScrollPositions(): void {
     //this.page.scrollRegions : empty array
-    console.log(this.page);
     if (this.page.scrollRegions) {
       this.scrollRegions().forEach((region: Element, index: number) => {
         const scrollPosition = this.page.scrollRegions[index]
@@ -392,9 +391,11 @@ export class Router {
           responseUrl.hash = requestUrl.hash
           pageResponse.url = responseUrl.href
         }
+        // this.page = scrollRegions OK
         return this.setPage(pageResponse, { visitId, replace, preserveScroll, preserveState })
       })
       .then(() => {
+        //this.page = scrollRegions not ok
         const errors = this.page.props.errors || {}
         if (Object.keys(errors).length > 0) {
           const scopedErrors = errorBag ? (errors[errorBag] ? errors[errorBag] : {}) : errors
@@ -456,8 +457,9 @@ export class Router {
   ): Promise<void> {
     return Promise.resolve(this.resolveComponent(page.component)).then((component) => {
       if (visitId === this.visitId) {
-        // check here
-        page.scrollRegions = page.scrollRegions || []
+        // console.log(page.scrollRegions) is always undefined at this stage
+        // with this.page, it work
+        page.scrollRegions = this.page.scrollRegions || []
         page.rememberedState = page.rememberedState || {}
         replace = replace || hrefToUrl(page.url).href === window.location.href
         replace ? this.replaceState(page) : this.pushState(page)
@@ -465,7 +467,7 @@ export class Router {
           if (!preserveScroll) {
             this.resetScrollPositions()
           } else {
-            // I add this method here, but I think the problem is before
+            // I added this line here
             this.restoreScrollPositions();
           }
           if (!replace) {
@@ -482,7 +484,7 @@ export class Router {
   }
 
   protected replaceState(page: Page): void {
-    this.page = page
+    // Looks like we're losing value of scrollRegions here ? 
     window.history.replaceState(page, '', page.url)
   }
 

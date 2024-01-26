@@ -477,13 +477,11 @@ export class Router {
   }
 
   protected pushState(page: Page): void {
-    // Looks like we're losing value of scrollRegions here ?
     this.page = page
     window.history.pushState(page, '', page.url)
   }
 
   protected replaceState(page: Page): void {
-    // Looks like we're losing value of scrollRegions here ? 
     this.page = page;
     window.history.replaceState(page, '', page.url)
   }

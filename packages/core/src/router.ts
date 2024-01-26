@@ -389,7 +389,6 @@ export class Router {
           responseUrl.hash = requestUrl.hash
           pageResponse.url = responseUrl.href
         }
-        // this.page = scrollRegions OK
         return this.setPage(pageResponse, { visitId, replace, preserveScroll, preserveState })
       })
       .then(() => {

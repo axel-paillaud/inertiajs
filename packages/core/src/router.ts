@@ -102,7 +102,6 @@ export class Router {
     ) {
       // this.page have scrollRegions with scrollPosition here
       this.saveScrollPositions()
-      console.log(this.page);
     }
   }
 
@@ -110,7 +109,6 @@ export class Router {
     this.replaceState({
       ...this.page,
       scrollRegions: Array.from(this.scrollRegions()).map((region) => {
-        console.log(region.scrollTop);
         return {
           top: region.scrollTop,
           left: region.scrollLeft,

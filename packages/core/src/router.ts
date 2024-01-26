@@ -177,7 +177,6 @@ export class Router {
     }
   }
 
-  // It is not locationVisit in my case (Axel)
   protected isLocationVisit(): boolean {
     try {
       return window.sessionStorage.getItem('inertiaLocationVisit') !== null

@@ -457,7 +457,6 @@ export class Router {
       if (visitId === this.visitId) {
         // console.log(page.scrollRegions) is always undefined at this stage
         // with this.page, it work
-        console.log(this.page);
         page.scrollRegions = this.page.scrollRegions || []
         page.rememberedState = page.rememberedState || {}
         replace = replace || hrefToUrl(page.url).href === window.location.href

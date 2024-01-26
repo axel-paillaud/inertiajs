@@ -102,6 +102,7 @@ export class Router {
     ) {
       // this.page have scrollRegions with scrollPosition here
       this.saveScrollPositions()
+      console.log(this.page);
     }
   }
 
@@ -458,6 +459,7 @@ export class Router {
       if (visitId === this.visitId) {
         // console.log(page.scrollRegions) is always undefined at this stage
         // with this.page, it work
+        console.log(this.page);
         page.scrollRegions = this.page.scrollRegions || []
         page.rememberedState = page.rememberedState || {}
         replace = replace || hrefToUrl(page.url).href === window.location.href
@@ -478,12 +480,14 @@ export class Router {
   }
 
   protected pushState(page: Page): void {
+    // Looks like we're losing value of scrollRegions here ?
     this.page = page
     window.history.pushState(page, '', page.url)
   }
 
   protected replaceState(page: Page): void {
     // Looks like we're losing value of scrollRegions here ? 
+    this.page = page;
     window.history.replaceState(page, '', page.url)
   }
 

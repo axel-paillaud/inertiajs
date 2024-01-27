@@ -374,6 +374,7 @@ export class Router {
           return Promise.reject({ response })
         }
 
+        console.log(response.data);
         const pageResponse: Page = response.data
         if (only.length && pageResponse.component === this.page.component) {
           pageResponse.props = { ...this.page.props, ...pageResponse.props }
@@ -389,11 +390,9 @@ export class Router {
           responseUrl.hash = requestUrl.hash
           pageResponse.url = responseUrl.href
         }
-        // this.page = scrollRegions OK
         return this.setPage(pageResponse, { visitId, replace, preserveScroll, preserveState })
       })
       .then(() => {
-        //this.page = scrollRegions not ok
         const errors = this.page.props.errors || {}
         if (Object.keys(errors).length > 0) {
           const scopedErrors = errorBag ? (errors[errorBag] ? errors[errorBag] : {}) : errors

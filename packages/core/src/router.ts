@@ -374,7 +374,6 @@ export class Router {
           return Promise.reject({ response })
         }
 
-        console.log(response.data);
         const pageResponse: Page = response.data
         if (only.length && pageResponse.component === this.page.component) {
           pageResponse.props = { ...this.page.props, ...pageResponse.props }
@@ -384,6 +383,9 @@ export class Router {
         if (preserveState && window.history.state?.rememberedState && pageResponse.component === this.page.component) {
           pageResponse.rememberedState = window.history.state.rememberedState
         }
+        // update here
+        pageResponse.scrollRegions = this.page.scrollRegions
+        console.log(pageResponse);
         const requestUrl = url
         const responseUrl = hrefToUrl(pageResponse.url)
         if (requestUrl.hash && !responseUrl.hash && urlWithoutHash(requestUrl).href === responseUrl.href) {
@@ -456,7 +458,7 @@ export class Router {
       if (visitId === this.visitId) {
         // console.log(page.scrollRegions) is always undefined at this stage
         // with this.page, it work
-        page.scrollRegions = this.page.scrollRegions || []
+        page.scrollRegions = page.scrollRegions || []
         page.rememberedState = page.rememberedState || {}
         replace = replace || hrefToUrl(page.url).href === window.location.href
         replace ? this.replaceState(page) : this.pushState(page)

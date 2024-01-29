@@ -10,14 +10,18 @@ const Form = () => {
 
   function submit(e) {
     e.preventDefault()
-    form.post('/user')
+    form.post('form', { preserveScroll: true, preserveState: false})
   }
 
   return (
     <>
       <Head title="Form" />
       <h1 className="text-3xl">Form</h1>
-      <form onSubmit={submit} className="mt-6 max-w-md space-y-4">
+      <form
+        onSubmit={submit}
+        className="mt-6 max-w-md space-y-4 overflow-scroll max-h-80"
+        preserve-scroll
+      >
         {form.isDirty && (
           <div className="my-5 rounded border border-amber-100 bg-amber-50 p-3 text-amber-800">
             There are unsaved changes!
@@ -73,6 +77,93 @@ const Form = () => {
           <button type="button" onClick={() => form.reset()}>
             Reset
           </button>
+        </div>
+        <div>
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
+            lorem ipsum dolor sit amet.
         </div>
       </form>
     </>

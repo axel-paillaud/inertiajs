@@ -385,7 +385,6 @@ export class Router {
         }
         // update here
         pageResponse.scrollRegions = this.page.scrollRegions
-        console.log(pageResponse);
         const requestUrl = url
         const responseUrl = hrefToUrl(pageResponse.url)
         if (requestUrl.hash && !responseUrl.hash && urlWithoutHash(requestUrl).href === responseUrl.href) {

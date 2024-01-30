@@ -20,7 +20,7 @@ const Form = () => {
       <form
         onSubmit={submit}
         className="mt-6 max-w-md space-y-4 overflow-scroll max-h-80"
-        preserve-scroll
+        preserve-scroll="true"
       >
         {form.isDirty && (
           <div className="my-5 rounded border border-amber-100 bg-amber-50 p-3 text-amber-800">

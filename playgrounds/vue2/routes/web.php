@@ -72,7 +72,7 @@ Route::get('/form', function () {
     return inertia('Form');
 });
 
-Route::post('/user', function () {
+Route::post('/form', function () {
     return inertia('User', [
         'user' => request()->validate([
             'name' => ['required'],

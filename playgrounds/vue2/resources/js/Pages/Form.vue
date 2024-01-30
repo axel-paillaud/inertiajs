@@ -11,13 +11,21 @@ const form = useForm('NewUser', {
   company: '',
   role: '',
 })
+
+function submitForm() {
+    form.post('form', { preserveScroll: true, preserveState: false });
+}
 </script>
 
 <template>
   <div>
     <Head title="Form" />
     <h1 class="text-3xl">Form</h1>
-    <form @submit.prevent="form.post('/user')" class="mt-6 max-w-md space-y-4">
+      <form
+        scroll-region
+        @submit.prevent="submitForm"
+        class="mt-6 max-w-md space-y-4 overflow-scroll max-h-80"
+      >
       <div v-if="form.isDirty" class="my-5 rounded border border-amber-100 bg-amber-50 p-3 text-amber-800">
         There are unsaved changes!
       </div>
@@ -56,6 +64,23 @@ const form = useForm('NewUser', {
           Submit
         </button>
         <button type="button" @click="form.reset()">Reset</button>
+      </div>
+      <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus placeat omnis modi! Blanditiis nam ipsa pariatur dolorem natus voluptatibus culpa, magni hic in architecto obcaecati id soluta, officia, aspernatur quod?
       </div>
     </form>
   </div>

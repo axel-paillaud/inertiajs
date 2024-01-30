@@ -14,7 +14,7 @@
   })
 
   function submit() {
-    $form.post('/user')
+    $form.post('/form', {preserveScroll: true, preserveState: false })
   }
 </script>
 
@@ -24,7 +24,7 @@
 
 <h1 class="text-3xl">Form</h1>
 
-<form on:submit|preventDefault={submit} class="mt-6 max-w-md space-y-4">
+<form on:submit|preventDefault={submit} class="mt-6 max-w-md space-y-4 overflow-scroll max-h-80">
   {#if $form.isDirty}
     <div class="my-5 rounded border border-amber-100 bg-amber-50 p-3 text-amber-800">There are unsaved changes!</div>
   {/if}
@@ -69,5 +69,8 @@
       Submit
     </button>
     <button type="button" on:click={() => $form.reset()}>Reset</button>
+  </div>
+  <div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eu justo ac purus molestie dignissim. Nam quis enim finibus, interdum nulla sed, mollis magna. Mauris pretium aliquet venenatis. Nullam porta sodales pellentesque. Donec sagittis, neque quis placerat vestibulum, nulla felis ultricies lorem, ac malesuada risus mi a libero. Nulla vehicula eleifend lectus, tristique egestas sem fringilla non. Mauris sodales gravida nisi eget finibus. Mauris condimentum leo vel magna tristique suscipit. Pellentesque vulputate porta dolor, ac vestibulum ipsum sagittis a. Maecenas eleifend quam tortor, vel convallis est rhoncus sed. Suspendisse ipsum purus, varius quis sem luctus, molestie laoreet purus. Pellentesque egestas, diam eu molestie mollis, nulla lorem vestibulum dolor, id posuere est eros id orci.
   </div>
 </form>
